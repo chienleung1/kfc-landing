@@ -4,11 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
-  const [cart, setCart] = useState(0);
+  const [cart, setCart] = useState<string[]>([]);
 
-  const addToCart = () => {
-    setCart((prev) => prev + 1);
-  };
+const addToCart = (item: string) => {
+  setCart((prev) => [...prev, item]);
+};
 
   const scrollToMenu = () => {
     document
@@ -121,7 +121,7 @@ export default function Home() {
                 </p>
 
                 <button
-                  onClick={addToCart}
+                  onClick={() => addToCart("Family Bucket")}
                   className="mt-6 bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700"
                 >
                   Add To Cart
@@ -147,7 +147,7 @@ export default function Home() {
                 </p>
 
                 <button
-                  onClick={addToCart}
+                  onClick={() => addToCart("Zinger Burger")}
                   className="mt-6 bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700"
                 >
                   Add To Cart
@@ -173,7 +173,7 @@ export default function Home() {
                 </p>
 
                 <button
-                  onClick={addToCart}
+                  onClick={() => addToCart("Hot Wings")}
                   className="mt-6 bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700"
                 >
                   Add To Cart
